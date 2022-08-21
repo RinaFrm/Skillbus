@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillbus</title>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/js/index.js"></script>
+  <script defer>
+    async function createClientFirst() {
+        const response = await fetch('http://localhost:3000/api/clients', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Арсений',
+            surname: 'Куприянов',
+            lastName: 'Валерьевич',
+            contacts: [
+              {
+                type: 'phone',
+                value: '+7267453388'
+              },
+              {
+                type: 'vk',
+                value: 'https://vk.com/id101306744'
+              }
+            ]
+          })
+        });
+        const data = await response.json();
+      }
+    async function changeClient() {
+      const response = await fetch('http://localhost:3000/api/clients/1649946401869', {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          contacts: [
+            {
+              type: 'Телефон', 
+              value: '89997106269'
+            }
+          ]
+        })
+      });
+      const data = await response.json();
+    };
+    async function deleteClient() {
+      const response = await fetch ('http://localhost:3000/api/clients/1654202028164', {
+        method: 'DELETE',
+      });
+        if (response.status === 404)
+          console.log('Не удалось удалить дело, так как его не существует');
+        const data = await response.json();
+        console.log(data);
+      };
+  </script>
+</head>
+<body>
+</body>
+</html>
