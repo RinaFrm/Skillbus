@@ -14,7 +14,7 @@ const createHeader = () => {
   container.classList.add('container', 'header__container');
   logo.classList.add('logo', 'header__logo');
   logoImg.classList.add('logo__img');
-  logoImg.src = '/img/header-logo.svg'
+  logoImg.src = '/frontend/img/header-logo.svg'
   logoImg.alt = 'Логотип';
   form.classList.add('header__form');
   input.classList.add('header__input');
@@ -394,10 +394,9 @@ const getContacts = (data) => {
       contacts.slice(4).forEach(e => e.style.display = 'block');
       showMore.style.display = 'none';
       console.log(2)
-    })
+    });
   }
 
-    
   return listOfContacs.outerHTML;
 }
 
